@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>KaMiZeta (KZ) • Streetwear & DTF Studio | Tienda Oficial</title>
+  <meta name="description" content="KaMiZeta (KZ) - Tienda oficial de streetwear en Bogotá, Colombia. Colecciones: 73505, Superhéroes, Chicas y Navidad. Telas KZ Essential y Pesada Brutal.">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Google Fonts: Space Grotesk & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700;800;900&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            kz: {
+              black: '#080808',
+              dark: '#111111',
+              card: '#161616',
+              hover: '#222222',
+              border: '#262626',
+              gold: '#E5A93C',
+              red: '#E53E3E',
+              accent: '#38BDF8'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            heading: ['Space Grotesk', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Scrollbars discretos */
+    ::-webkit-scrollbar { width: 5px; height: 5px; }
+    ::-webkit-scrollbar-track { background: #080808; }
+    ::-webkit-scrollbar-thumb { background: #333333; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #555555; }
+    
+    /* Contenedor Hero Banner 2:1 estricto sin recortes */
+    .hero-banner-container {
+      width: 100%;
+      aspect-ratio: 2 / 1;
+      position: relative;
+      overflow: hidden;
+      background-color: #080808;
+      touch-action: pan-y;
+    }
+    .hero-slide {
+      transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+    .hero-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    /* Ocultar scrollbar horizontal en filtros móviles */
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    /* Zoom modal */
+    .zoom-lens-container {
+      overflow: hidden;
+      cursor: crosshair;
+    }
+    .zoom-lens-img {
+      transition: transform 0.15s ease-out;
+      transform-origin: center center;
+    }
+  </style>
+</head>
+<body class="bg-kz-black text-gray-100 font-sans antialiased selection:bg-kz-gold selection:text-black min-h-screen flex flex-col">
+
+  <!-- Top Announcement Bar -->
+  <aside aria-label="Anuncios y contacto" class="bg-gradient-to-r from-neutral-900 via-neutral-800 to-neutral-900 text-xs py-2 px-3 sm:px-4 border-b border-kz-border">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-1.5 sm:gap-2 text-center sm:text-left">
+      <div class="flex items-center gap-2 text-gray-300 text-[11px] sm:text-xs">
+        <span class="inline-flex items-center justify-center bg-kz-gold/20 text-kz-gold font-bold px-2 py-0.5 rounded text-[10px] uppercase tracking-wider">KZ Studio</span>
+        <span>Estampados DTF Ultra-HD • <strong>KZ Essential</strong> & <strong>Pesada Brutal</strong></span>
+      </div>
+      <div class="flex items-center gap-4 text-gray-300 text-[11px] sm:text-xs">
+        <button onclick="openSizeGuideModal()" class="text-kz-gold hover:text-yellow-400 underline font-medium flex items-center gap-1">
+          <i class="fa-solid fa-ruler-combined"></i> Guía de Tallas & Ficha Técnica
+        </button>
+        <a href="https://wa.me/573334019149" target="_blank" rel="noopener noreferrer" class="hover:text-kz-gold transition-colors flex items-center gap-1 font-medium">
+          <i class="fa-brands fa-whatsapp text-emerald-400"></i> WhatsApp: +57 333 401 9149
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Navigation Header -->
+  <header class="sticky top-0 z-40 bg-kz-black/95 backdrop-blur-md border-b border-kz-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 sm:h-20">
+        <!-- Brand Logo -->
+        <a href="#inicio" class="flex items-center gap-2.5 sm:gap-3 group">
+          <div class="w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-xl flex items-center justify-center p-1 sm:p-1.5 shadow-md group-hover:scale-105 transition-transform">
+            <span class="font-heading font-black text-black text-xl tracking-tighter">KZ</span>
+          </div>
+          <div class="flex flex-col">
+            <span class="font-heading font-black text-lg sm:text-xl tracking-wider text-white flex items-center gap-1">
+              KaMiZeta <span class="text-kz-gold text-xs sm:text-sm font-bold bg-kz-gold/10 px-1.5 py-0.5 rounded border border-kz-gold/30">KZ</span>
+            </span>
+            <span class="text-[9px] sm:text-[10px] text-gray-400 uppercase tracking-widest font-medium">Streetwear & DTF Studio</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden lg:flex items-center gap-6 text-sm font-medium">
+          <a href="#inicio" class="text-gray-300 hover:text-white transition-colors">Inicio</a>
+          <a href="#colecciones" class="text-gray-300 hover:text-white transition-colors">Colecciones</a>
+          <a href="#telas-calidad" class="text-gray-300 hover:text-white transition-colors">Nuestras Telas</a>
+          <button onclick="openSizeGuideModal()" class="text-gray-300 hover:text-white flex items-center gap-1.5 transition-colors">
+            <i class="fa-solid fa-ruler-combined text-kz-gold text-xs"></i> Tallas & Medidas
+          </button>
+          <a href="#personalizados" class="text-kz-gold hover:text-yellow-400 flex items-center gap-1.5 font-bold transition-colors">
+            <i class="fa-solid fa-wand-magic-sparkles text-xs"></i> Personalizados
+          </a>
+        </nav>
+
+        <!-- CTA WhatsApp & Actions -->
+        <div class="flex items-center gap-2 sm:gap-3">
+          <a href="https://wa.me/573334019149?text=Hola%20KaMiZeta,%20quiero%20conocer%20el%20cat%C3%A1logo%20y%20hacer%20un%20pedido" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 sm:gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs sm:text-sm px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl shadow-lg shadow-emerald-900/30 transition-all hover:scale-105">
+            <i class="fa-brands fa-whatsapp text-base sm:text-lg"></i>
+            <span class="hidden sm:inline">Comprar al WhatsApp</span>
+            <span class="sm:hidden">Comprar</span>
+          </a>
+          
+          <!-- Mobile Menu Button -->
+          <button id="btn-mobile-menu" aria-label="Abrir menú" class="lg:hidden text-gray-300 hover:text-white p-2 text-xl focus:outline-none">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Navigation -->
+    <div id="mobile-nav" class="hidden lg:hidden bg-kz-dark border-b border-kz-border px-4 pt-3 pb-6 space-y-3">
+      <a href="#inicio" class="block py-2.5 text-gray-200 hover:text-white font-medium mobile-link text-sm">Inicio</a>
+      <a href="#colecciones" class="block py-2.5 text-gray-200 hover:text-white mobile-link text-sm">Catálogo de Colecciones (34 Diseños)</a>
+      <a href="#telas-calidad" class="block py-2.5 text-gray-200 hover:text-white mobile-link text-sm">Guía de Telas (Essential vs Brutal)</a>
+      <button onclick="openSizeGuideModal(); document.getElementById('mobile-nav').classList.add('hidden');" class="w-full text-left py-2.5 text-kz-gold font-medium text-sm flex items-center gap-2">
+        <i class="fa-solid fa-ruler-combined"></i> Tabla de Medidas & Tallas
+      </button>
+      <a href="#personalizados" class="block py-2.5 text-kz-gold font-bold mobile-link text-sm flex items-center gap-2">
+        <i class="fa-solid fa-wand-magic-sparkles text-xs"></i> Personalizados & DTF
+      </a>
+      <a href="https://wa.me/573334019149?text=Hola%20KaMiZeta,%20quiero%20hacer%20un%20pedido" target="_blank" rel="noopener noreferrer" class="block py-2.5 text-emerald-400 font-bold mobile-link text-sm flex items-center gap-2">
+        <i class="fa-brands fa-whatsapp"></i> Chat WhatsApp (+57 333 401 9149)
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero Section with Full 2:1 Banners and Mobile Touch Swipe -->
+  <section id="inicio" class="relative bg-kz-dark border-b border-kz-border">
+    <div class="max-w-[1920px] mx-auto">
+      <div class="hero-banner-container" id="hero-banner-wrapper">
+        
+        <!-- Carousel Slides Container -->
+        <div id="hero-slider" class="w-full h-full relative cursor-grab active:cursor-grabbing">
+          
+          <!-- Slide 1: KaMiZeta Marca Sombrilla (Viste con actitud) -->
+          <div class="hero-slide absolute inset-0 opacity-100 pointer-events-auto" onclick="filterByLine('todas')">
+            <img src="https://drive.google.com/thumbnail?id=17NXKiujXe7bJlwsM-t8gYDsyqkpZc9w0&sz=w1920" alt="KaMiZeta - Viste con Actitud" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=1920&q=80'">
+          </div>
+
+          <!-- Slide 2: Colección 73505 (Estilo de Vida) -->
+          <div class="hero-slide absolute inset-0 opacity-0 pointer-events-none" onclick="filterByLine('73505')">
+            <img src="https://drive.google.com/thumbnail?id=1ZWlO2Uu79rTUmRpYI8Qkbwq_1RlEcSOv&sz=w1920" alt="Colección Cristiana 73505" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=1920&q=80'">
+          </div>
+
+          <!-- Slide 3: Superhéroes y Cultura Pop -->
+          <div class="hero-slide absolute inset-0 opacity-0 pointer-events-none" onclick="filterByLine('superheroes')">
+            <img src="https://drive.google.com/thumbnail?id=1ASLKWF8rbF_zTUowkmU26HSJCZPAwk-c&sz=w1920" alt="Colección Superhéroes y Cultura Pop" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1578632767115-351597cf2477?w=1920&q=80'">
+          </div>
+
+          <!-- Slide 4: Colección Navidad (Tu regalo perfecto) -->
+          <div class="hero-slide absolute inset-0 opacity-0 pointer-events-none" onclick="filterByLine('navidad')">
+            <img src="https://drive.google.com/thumbnail?id=1D0zbmOSeHOamjjB1k7mBchx2ZGp8vxok&sz=w1920" alt="Colección Navidad KaMiZeta" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=1920&q=80'">
+          </div>
+
+          <!-- Slide 5: Colección Chicas (Moda urbana femenina) -->
+          <div class="hero-slide absolute inset-0 opacity-0 pointer-events-none" onclick="filterByLine('chicas')">
+            <img src="https://drive.google.com/thumbnail?id=1E50fx35gkqnD9NAoqvbQeEplV5_nEOr_&sz=w1920" alt="Colección Chicas KaMiZeta" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1920&q=80'">
+          </div>
+
+        </div>
+
+        <!-- Slider Arrows (Compact on mobile) -->
+        <button id="slider-prev" aria-label="Banner anterior" class="absolute left-2 sm:left-3 top-1/2 -translate-y-1/2 z-20 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-black/60 hover:bg-black/90 text-white flex items-center justify-center backdrop-blur-sm border border-white/20 transition-all hover:scale-110">
+          <i class="fa-solid fa-chevron-left text-xs sm:text-sm"></i>
+        </button>
+        <button id="slider-next" aria-label="Siguiente banner" class="absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 z-20 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-black/60 hover:bg-black/90 text-white flex items-center justify-center backdrop-blur-sm border border-white/20 transition-all hover:scale-110">
+          <i class="fa-solid fa-chevron-right text-xs sm:text-sm"></i>
+        </button>
+
+        <!-- Carousel Indicators Dots -->
+        <div id="slider-dots" class="absolute bottom-2.5 sm:bottom-4 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1.5 sm:gap-2 bg-black/60 px-3 py-1 sm:py-1.5 rounded-full backdrop-blur-md border border-white/10">
+          <button data-slide="0" aria-label="Ver banner 1" class="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-kz-gold transition-all"></button>
+          <button data-slide="1" aria-label="Ver banner 2" class="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-gray-500 hover:bg-white transition-all"></button>
+          <button data-slide="2" aria-label="Ver banner 3" class="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-gray-500 hover:bg-white transition-all"></button>
+          <button data-slide="3" aria-label="Ver banner 4" class="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-gray-500 hover:bg-white transition-all"></button>
+          <button data-slide="4" aria-label="Ver banner 5" class="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-gray-500 hover:bg-white transition-all"></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fabric Quality Explainer Banner -->
+  <section id="telas-calidad" class="bg-gradient-to-b from-kz-dark to-kz-black py-8 sm:py-10 border-b border-kz-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-6 sm:mb-8">
+        <span class="text-kz-gold text-[10px] sm:text-xs font-bold uppercase tracking-widest">Tecnología Textil KaMiZeta</span>
+        <h2 class="font-heading font-black text-xl sm:text-3xl text-white mt-1">Dos Calidades Para Tu Estilo</h2>
+        <p class="text-gray-400 text-xs sm:text-sm mt-1.5 max-w-xl mx-auto">Todas nuestras camisetas se confeccionan con estampación DTF Ultra-HD de alta durabilidad y sin cuarteo al lavado.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 max-w-4xl mx-auto">
+        <!-- Fabric 1: Essential -->
+        <div class="bg-kz-card border border-kz-border rounded-2xl p-5 sm:p-6 relative overflow-hidden hover:border-sky-400/50 transition-all group">
+          <div class="flex items-start justify-between gap-3">
+            <div>
+              <span class="inline-block bg-sky-500/10 text-sky-400 border border-sky-500/30 text-[10px] sm:text-[11px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider mb-1.5">Línea Confort & Volumen</span>
+              <h3 class="font-heading font-bold text-lg sm:text-xl text-white group-hover:text-sky-300 transition-colors">KZ Essential</h3>
+              <p class="text-xs text-sky-400 font-semibold mt-0.5">Tela Tacto Piel de Durazno (160 g/m²)</p>
+            </div>
+            <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-neutral-800 flex items-center justify-center text-sky-400 text-base sm:text-lg flex-shrink-0">
+              <i class="fa-solid fa-feather"></i>
+            </div>
+          </div>
+          <p class="text-gray-300 text-xs sm:text-sm mt-3 leading-relaxed">
+            Camiseta ligera, extra suave y fresca. Caída fluida perfecta para el uso diario o compras por volumen. Secado rápido y excelente comodidad térmica.
+          </p>
+          <ul class="text-[11px] sm:text-xs text-gray-400 mt-3 sm:mt-4 space-y-1.5 border-t border-kz-border/60 pt-3">
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-sky-400"></i> Tacto aterciopelado ultraliviano</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-sky-400"></i> Frescura total para Bogotá y climas cálidos</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-sky-400"></i> Precio súper accesible para armar tu colección</li>
+          </ul>
+        </div>
+
+        <!-- Fabric 2: Pesada Brutal -->
+        <div class="bg-kz-card border border-kz-gold/40 rounded-2xl p-5 sm:p-6 relative overflow-hidden shadow-lg shadow-kz-gold/5 hover:border-kz-gold transition-all group">
+          <div class="flex items-start justify-between gap-3">
+            <div>
+              <span class="inline-block bg-kz-gold/20 text-kz-gold border border-kz-gold/40 text-[10px] sm:text-[11px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider mb-1.5">Streetwear Heavyweight</span>
+              <h3 class="font-heading font-bold text-lg sm:text-xl text-white group-hover:text-kz-gold transition-colors">Pesada Brutal</h3>
+              <p class="text-xs text-kz-gold font-semibold mt-0.5">Alto Gramaje (230–240 g/m²) • 96/4 Spandex</p>
+            </div>
+            <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-kz-gold/20 flex items-center justify-center text-kz-gold text-base sm:text-lg flex-shrink-0">
+              <i class="fa-solid fa-shield-halved"></i>
+            </div>
+          </div>
+          <p class="text-gray-300 text-xs sm:text-sm mt-3 leading-relaxed">
+            Silueta estructurada con cuello grueso indeformable y caída boxy/oversize de impacto. La camiseta de culto para los apasionados de la moda urbana.
+          </p>
+          <ul class="text-[11px] sm:text-xs text-gray-400 mt-3 sm:mt-4 space-y-1.5 border-t border-kz-border/60 pt-3">
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-kz-gold"></i> Tela pesada con cuerpo, presencia y textura sólida</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-kz-gold"></i> Cuello rib cerrado y reforzado de 3 cm</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-kz-gold"></i> Calidad premium de colección y máxima durabilidad</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Catalog Section -->
+  <main id="colecciones" class="py-8 sm:py-12 bg-kz-black flex-grow">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header with Line Filters -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6 sm:mb-8">
+        <div>
+          <span class="text-kz-gold text-[10px] sm:text-xs font-bold uppercase tracking-widest">Catálogo Oficial KaMiZeta</span>
+          <h2 class="font-heading font-black text-2xl sm:text-4xl text-white mt-1">Explora Nuestras Colecciones</h2>
+          <p class="text-gray-400 text-xs sm:text-sm mt-1">Toca las muestras de color para ver cada tono, usa la lupa para examinar el estampado y pide a WhatsApp.</p>
+        </div>
+
+        <!-- Line Filter Pills (Mobile-optimized scroll) -->
+        <div class="flex items-center gap-2 overflow-x-auto pb-2 md:pb-0 no-scrollbar" id="line-filters-container">
+          <button onclick="filterByLine('todas')" class="line-filter-btn active whitespace-nowrap px-4 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-kz-gold text-black transition-all" data-line="todas">
+            Todas (<span id="count-todas">34</span>)
+          </button>
+          <button onclick="filterByLine('73505')" class="line-filter-btn whitespace-nowrap px-4 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-medium bg-kz-card border border-kz-border text-gray-300 hover:text-white hover:border-kz-gold transition-all" data-line="73505">
+            73505 Fe (<span id="count-73505">3</span>)
+          </button>
+          <button onclick="filterByLine('superheroes')" class="line-filter-btn whitespace-nowrap px-4 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-medium bg-kz-card border border-kz-border text-gray-300 hover:text-white hover:border-kz-gold transition-all" data-line="superheroes">
+            Superhéroes (<span id="count-superheroes">3</span>)
+          </button>
+          <button onclick="filterByLine('chicas')" class="line-filter-btn whitespace-nowrap px-4 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-medium bg-kz-card border border-kz-border text-gray-300 hover:text-white hover:border-kz-gold transition-all" data-line="chicas">
+            Chicas (<span id="count-chicas">11</span>)
+          </button>
+          <button onclick="filterByLine('navidad')" class="line-filter-btn whitespace-nowrap px-4 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-medium bg-kz-card border border-kz-border text-gray-300 hover:text-white hover:border-kz-gold transition-all" data-line="navidad">
+            Navidad 2026 (<span id="count-navidad">17</span>)
+          </button>
+        </div>
+      </div>
+
+      <!-- Products Grid -->
+      <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
+        <!-- Products will be dynamically rendered here via JavaScript -->
+      </div>
+      
+    </div>
+  </main>
+
+  <!-- Custom Orders & Personalization Section -->
+  <section id="personalizados" class="py-10 sm:py-14 bg-gradient-to-r from-neutral-900 via-neutral-950 to-neutral-900 border-t border-kz-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-kz-card border border-kz-gold/40 rounded-3xl p-6 sm:p-10 md:p-12 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6 sm:gap-8 shadow-2xl">
+        <div class="space-y-3 sm:space-y-4 max-w-xl text-center md:text-left">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-kz-gold/20 text-kz-gold text-[10px] sm:text-xs font-bold uppercase tracking-wider rounded-full border border-kz-gold/30">
+            <i class="fa-solid fa-wand-magic-sparkles"></i> Servicio de Estampación DTF
+          </span>
+          <h2 class="font-heading font-black text-2xl sm:text-3xl md:text-4xl text-white leading-tight">¿Tienes Tu Propio Diseño o Logotipo?</h2>
+          <p class="text-gray-300 text-xs sm:text-sm md:text-base leading-relaxed">
+            Hacemos realidad tu idea en tela <strong>KZ Essential</strong> o <strong>Pesada Brutal</strong>. Envíanos tu imagen o foto por WhatsApp y te enviamos la cotización y el montaje digital de inmediato.
+          </p>
+          <div class="flex flex-wrap justify-center md:justify-start gap-3 sm:gap-4 pt-1 sm:pt-2 text-xs text-gray-400">
+            <span class="flex items-center gap-1.5"><i class="fa-solid fa-check text-emerald-400"></i> Desde 1 sola unidad</span>
+            <span class="flex items-center gap-1.5"><i class="fa-solid fa-check text-emerald-400"></i> Precios especiales para marcas y grupos</span>
+            <span class="flex items-center gap-1.5"><i class="fa-solid fa-check text-emerald-400"></i> Envíos a toda Colombia</span>
+          </div>
+        </div>
+
+        <div class="flex-shrink-0 w-full md:w-auto">
+          <a href="https://wa.me/573334019149?text=Hola%20KaMiZeta,%20quiero%20cotizar%20una%20camiseta%20con%20mi%20propio%20dise%C3%B1o%20personalizado" 
+             target="_blank" 
+             rel="noopener noreferrer" 
+             class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 sm:gap-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm sm:text-base px-6 sm:px-8 py-3.5 sm:py-4 rounded-2xl shadow-xl shadow-emerald-950/60 hover:scale-105 transition-all text-center">
+            <i class="fa-brands fa-whatsapp text-xl sm:text-2xl"></i>
+            <span>Cotizar Diseño al WhatsApp</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-kz-black border-t border-kz-border/80 text-gray-400 text-xs py-8 sm:py-10 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8">
+      
+      <!-- Brand Info -->
+      <div class="md:col-span-2 space-y-3">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center p-1">
+            <span class="font-heading font-black text-black text-base tracking-tighter">KZ</span>
+          </div>
+          <span class="font-heading font-black text-lg text-white">KaMiZeta (KZ)</span>
+        </div>
+        <p class="text-gray-400 text-xs max-w-sm leading-relaxed">
+          Estudio de streetwear y estampación DTF de alta definición. Confección en Bogotá con envíos directos a todo el país.
+        </p>
+        <p class="text-kz-gold font-bold text-xs">
+          Líneas activas: 73505 (Fe) • Superhéroes • Chicas • Cartoon • Navidad
+        </p>
+      </div>
+
+      <!-- Customer Contact Direct -->
+      <div>
+        <h4 class="font-heading font-bold text-white text-sm uppercase tracking-wider mb-3">Atención & Pedidos</h4>
+        <ul class="space-y-2 text-xs">
+          <li>
+            <a href="https://wa.me/573334019149" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-emerald-400 flex items-center gap-2">
+              <i class="fa-brands fa-whatsapp text-emerald-400 text-sm"></i> +57 333 401 9149
+            </a>
+          </li>
+          <li class="flex items-center gap-2 text-gray-400">
+            <i class="fa-solid fa-location-dot text-kz-gold"></i> Bogotá, Colombia
+          </li>
+          <li class="flex items-center gap-2 text-gray-400">
+            <i class="fa-solid fa-truck-fast text-kz-gold"></i> Envíos a nivel nacional
+          </li>
+        </ul>
+      </div>
+
+      <!-- Fabric Assurance -->
+      <div>
+        <h4 class="font-heading font-bold text-white text-sm uppercase tracking-wider mb-3">Nuestras Telas</h4>
+        <ul class="space-y-2 text-xs text-gray-400">
+          <li>• <strong>KZ Essential:</strong> Piel de durazno suave y fresca (160g)</li>
+          <li>• <strong>Pesada Brutal:</strong> Algodón 96/4 de alto gramaje (240g)</li>
+          <li>• <strong>Estampación DTF:</strong> Sin cuarteo, máxima definición</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 pt-6 border-t border-kz-border flex flex-col sm:flex-row justify-between items-center gap-3 text-[11px] text-gray-500">
+      <p>© 2026 KaMiZeta (KZ). Todos los derechos reservados. Streetwear con identidad propia.</p>
+      <a href="https://wa.me/573334019149" target="_blank" rel="noopener noreferrer" class="text-emerald-400 hover:underline">
+        WhatsApp: 333 401 9149
+      </a>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp Action Button -->
+  <a href="https://wa.me/573334019149?text=Hola%20KaMiZeta,%20quiero%20hacer%20un%20pedido%20de%20camisetas" 
+     target="_blank" 
+     rel="noopener noreferrer" 
+     class="fixed bottom-5 right-5 z-50 bg-emerald-500 hover:bg-emerald-400 text-white w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center shadow-2xl shadow-emerald-900/60 hover:scale-110 transition-all border-2 border-white/20 group"
+     title="Escríbenos a WhatsApp (333 401 9149)">
+    <i class="fa-brands fa-whatsapp text-2xl sm:text-3xl"></i>
+    <span class="hidden sm:block absolute right-16 bg-neutral-900 text-white text-xs font-bold px-3 py-1.5 rounded-lg border border-kz-border whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity shadow-lg">
+      ¡Pide por WhatsApp!
+    </span>
+  </a>
+
+  <!-- ============================================================== -->
+  <!-- MODAL: GUÍA DE TALLAS & FICHA TÉCNICA COMPARATIVA DE TELAS -->
+  <!-- ============================================================== -->
+  <div id="modal-size-guide" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md flex items-center justify-center p-4 overflow-y-auto">
+    <div class="bg-kz-card border border-kz-border rounded-3xl max-w-3xl w-full p-6 sm:p-8 relative my-8 shadow-2xl">
+      <button onclick="closeSizeGuideModal()" class="absolute top-5 right-5 text-gray-400 hover:text-white text-xl w-8 h-8 rounded-full bg-neutral-800 flex items-center justify-center">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="flex items-center gap-2 mb-1">
+        <span class="text-kz-gold text-xs font-bold uppercase tracking-wider">Ficha Técnica Oficial</span>
+      </div>
+      <h2 class="font-heading font-black text-2xl text-white">Guía de Telas y Medidas Corporales</h2>
+      <p class="text-gray-400 text-xs sm:text-sm mt-1">Conoce al detalle las especificaciones de confección y las medidas exactas en centímetros para elegir tu talla ideal.</p>
+
+      <!-- Tabla Comparativa de Telas -->
+      <div class="mt-6 border border-kz-border rounded-2xl overflow-hidden">
+        <table class="w-full text-left text-xs border-collapse">
+          <thead>
+            <tr class="bg-neutral-800 text-gray-200 border-b border-kz-border">
+              <th class="p-3 font-heading font-bold">Característica</th>
+              <th class="p-3 font-heading font-bold text-sky-400">KZ Essential</th>
+              <th class="p-3 font-heading font-bold text-kz-gold">Pesada Brutal</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-kz-border text-gray-300">
+            <tr>
+              <td class="p-3 font-semibold text-white">Composición</td>
+              <td class="p-3">Microfibra tacto durazno (100% poliéster peinado)</td>
+              <td class="p-3 font-medium text-kz-gold">96% Algodón peinado / 4% Spandex</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold text-white">Gramaje Textil</td>
+              <td class="p-3">160 g/m² (Ultraliviana y fresca)</td>
+              <td class="p-3 font-medium text-kz-gold">230–240 g/m² (Heavyweight estructurada)</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold text-white">Sensación / Tacto</td>
+              <td class="p-3">Aterciopelado, caída suave y ligera</td>
+              <td class="p-3">Gruesa, con cuerpo y presencia streetwear</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold text-white">Construcción Cuello</td>
+              <td class="p-3">Rib clásico estándar (1.5 cm)</td>
+              <td class="p-3 font-medium text-kz-gold">Rib grueso cerrado reforzado (3.0 cm indeformable)</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold text-white">Silueta Predominante</td>
+              <td class="p-3">Regular Fit confortable</td>
+              <td class="p-3 font-medium text-kz-gold">Oversize Boxy Fit de culto</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Tabla de Medidas en Centímetros -->
+      <h3 class="font-heading font-bold text-lg text-white mt-8 mb-3 flex items-center gap-2">
+        <i class="fa-solid fa-ruler text-kz-gold text-sm"></i> Tabla de Medidas (en centímetros)
+      </h3>
+      <div class="overflow-x-auto border border-kz-border rounded-2xl">
+        <table class="w-full text-left text-xs border-collapse">
+          <thead>
+            <tr class="bg-neutral-800 text-gray-200 border-b border-kz-border">
+              <th class="p-3 font-heading font-bold">Talla</th>
+              <th class="p-3 font-heading font-bold text-sky-400">Pecho (Regular)</th>
+              <th class="p-3 font-heading font-bold text-sky-400">Largo (Regular)</th>
+              <th class="p-3 font-heading font-bold text-kz-gold">Pecho (Oversize)</th>
+              <th class="p-3 font-heading font-bold text-kz-gold">Largo (Oversize)</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-kz-border text-gray-300">
+            <tr>
+              <td class="p-3 font-bold text-white">S (Small)</td>
+              <td class="p-3">50 cm</td>
+              <td class="p-3">70 cm</td>
+              <td class="p-3 text-kz-gold font-medium">56 cm</td>
+              <td class="p-3 text-kz-gold font-medium">73 cm</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-bold text-white">M (Medium)</td>
+              <td class="p-3">53 cm</td>
+              <td class="p-3">72 cm</td>
+              <td class="p-3 text-kz-gold font-medium">59 cm</td>
+              <td class="p-3 text-kz-gold font-medium">75 cm</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-bold text-white">L (Large)</td>
+              <td class="p-3">56 cm</td>
+              <td class="p-3">74 cm</td>
+              <td class="p-3 text-kz-gold font-medium">62 cm</td>
+              <td class="p-3 text-kz-gold font-medium">77 cm</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-bold text-white">XL (Extra Large)</td>
+              <td class="p-3">59 cm</td>
+              <td class="p-3">76 cm</td>
+              <td class="p-3 text-kz-gold font-medium">65 cm</td>
+              <td class="p-3 text-kz-gold font-medium">79 cm</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-bold text-white">XXL (Doble XL)</td>
+              <td class="p-3">62 cm</td>
+              <td class="p-3">78 cm</td>
+              <td class="p-3 text-kz-gold font-medium">68 cm</td>
+              <td class="p-3 text-kz-gold font-medium">81 cm</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-[11px] text-gray-400 mt-3">* El ancho de pecho se toma midiendo de sisa a sisa con la prenda extendida sobre una superficie plana.</p>
+    </div>
+  </div>
+
+  <!-- ============================================================== -->
+  <!-- MODAL: LUPA DE DETALLE / ZOOM INTERACTIVO DE ESTAMPADO DTF -->
+  <!-- ============================================================== -->
+  <div id="modal-zoom" class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="bg-kz-card border border-kz-border rounded-3xl max-w-2xl w-full p-6 relative shadow-2xl flex flex-col items-center">
+      <button onclick="closeZoomModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl w-8 h-8 rounded-full bg-neutral-800 flex items-center justify-center z-10">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="w-full text-left mb-3">
+        <span id="zoom-product-line" class="text-kz-gold text-xs font-bold uppercase tracking-wider">73505 (Fe)</span>
+        <h3 id="zoom-product-title" class="font-heading font-black text-xl text-white">Detalle de Estampado DTF</h3>
+        <p class="text-xs text-gray-400">Pasa el cursor o mueve el dedo para examinar el tramado y la textura de la prenda en alta resolución.</p>
+      </div>
+
+      <!-- Interactive Zoom Viewport -->
+      <div id="zoom-viewport" class="zoom-lens-container relative w-full aspect-square max-w-md bg-neutral-950 rounded-2xl border border-kz-border/80 flex items-center justify-center p-4 overflow-hidden">
+        <img id="zoom-target-img" src="" alt="Zoom camiseta" class="zoom-lens-img max-w-full max-h-full object-contain pointer-events-none">
+      </div>
+
+      <div class="mt-4 flex items-center justify-between w-full text-xs text-gray-400 pt-3 border-t border-kz-border">
+        <span>Color: <strong id="zoom-color-label" class="text-white">Blanco</strong></span>
+        <button onclick="orderZoomProductWhatsApp()" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-4 py-2 rounded-xl flex items-center gap-2">
+          <i class="fa-brands fa-whatsapp"></i> Pedir Esta Prenda
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Application Logic -->
+  <script>
+    let selectedLine = 'todas';
+    let currentSlide = 0;
+    const totalSlides = 5;
+    let sliderTimer = null;
+    let currentZoomItem = null;
+
+    // PALETAS FIJAS DE COLOR POR LÍNEA
+    const PALETTES = {
+      '73505': [
+        { name: 'Verde Salvia', hex: '#8A9A86' },
+        { name: 'Negro Profundo', hex: '#121212' },
+        { name: 'Blanco Puro', hex: '#F5F5F5' },
+        { name: 'Marfil / Crema', hex: '#F4F1EA' },
+        { name: 'Grafito Lavado', hex: '#2D3748' }
+      ],
+      'superheroes': [
+        { name: 'Negro Profundo', hex: '#121212' },
+        { name: 'Blanco Puro', hex: '#F5F5F5' },
+        { name: 'Grafito', hex: '#2D3748' },
+        { name: 'Rojo Escarlata', hex: '#C53030' }
+      ],
+      'chicas': [
+        { name: 'Blanco Puro', hex: '#F5F5F5' },
+        { name: 'Negro Profundo', hex: '#121212' },
+        { name: 'Marfil / Crema', hex: '#F4F1EA' },
+        { name: 'Rosa Nude / Blush', hex: '#E2B4A8' },
+        { name: 'Lavanda Pastel', hex: '#C4B5FD' }
+      ],
+      'navidad': [
+        { name: 'Blanco Puro', hex: '#F5F5F5' },
+        { name: 'Negro Profundo', hex: '#121212' },
+        { name: 'Rojo Festivo', hex: '#C53030' },
+        { name: 'Verde Pino', hex: '#276749' }
+      ]
+    };
+
+    // BASE DE DATOS COMPLETA: 34 REFERENCIAS AUTÉNTICAS
+    const ALL_PRODUCTS = [
+      // 1. LÍNEA 73505 (Fe & Streetwear - 3 referencias)
+      {
+        id: '73505-99',
+        title: '73505 // Dejó las 99 por Mí',
+        line: '73505',
+        lineLabel: '73505 (Fe)',
+        desc: 'Narrativa de rescate y amor incondicional (Lucas 15:4-7). Gráfica con la oveja central y tipografía urbana.',
+        colors: PALETTES['73505'],
+        img: 'https://drive.google.com/thumbnail?id=1tAK_gnR59OkWZ3f6rsg_Jwfc2ZPtvk0N&sz=w800',
+        fabrics: ['KZ Essential', 'Pesada Brutal']
+      },
+      {
+        id: '73505-100',
+        title: '73505 // Me Rescató 100 a Mí También',
+        line: '73505',
+        lineLabel: '73505 (Fe)',
+        desc: 'Edición conmemorativa de fe. Tipografía geométrica 100 con la oveja de la línea 73505.',
+        colors: PALETTES['73505'],
+        img: 'https://drive.google.com/thumbnail?id=17vpOqZUEDrRxuHQBlHYKSijB2TNkerH0&sz=w800',
+        fabrics: ['KZ Essential', 'Pesada Brutal']
+      },
+      {
+        id: '73505-dios',
+        title: '73505 // Dios de lo Imposible',
+        line: '73505',
+        lineLabel: '73505 (Fe)',
+        desc: 'Lucas 1:37. Retrato artístico de Jesús con ribbons tipográficos en color amarillo y cian vibrante.',
+        colors: PALETTES['73505'],
+        img: 'https://drive.google.com/thumbnail?id=12PkXr3QzbFmdSN9aJCGJdK0tE1R0nx5a&sz=w800',
+        fabrics: ['KZ Essential', 'Pesada Brutal']
+      },
+
+      // 2. LÍNEA SUPERHÉROES & POP CULTURE (3 referencias)
+      {
+        id: 'hero-wolverine',
+        title: 'Wolverine // Avengers Doomsday (Backprint)',
+        line: 'superheroes',
+        lineLabel: 'Superhéroes',
+        desc: 'Estampado de espalda de gran formato con arte hiperrealista de Wolverine y logo Doomsday en pecho.',
+        colors: PALETTES['superheroes'],
+        img: 'https://drive.google.com/thumbnail?id=1OBHAQ-T7NdAA2fNIlYLkM8jW8PKZpvuE&sz=w800',
+        fabrics: ['Pesada Brutal', 'KZ Essential']
+      },
+      {
+        id: 'hero-marvel',
+        title: 'Marvel Comics // Spider-Man Box Logo',
+        line: 'superheroes',
+        lineLabel: 'Superhéroes',
+        desc: 'Icónico box logo rojo de Marvel intervenido con la telaraña y silueta de Spider-Man.',
+        colors: PALETTES['superheroes'],
+        img: 'https://drive.google.com/thumbnail?id=13lPNvgZwOSR6ueM1T1XNPDRfhzfAm4SC&sz=w800',
+        fabrics: ['KZ Essential', 'Pesada Brutal']
+      },
+      {
+        id: 'hero-avengers',
+        title: 'Marvel Studios // Avengers Logo Minimal',
+        line: 'superheroes',
+        lineLabel: 'Superhéroes',
+        desc: 'Diseño minimalista en pecho con la insignia de Los Vengadores para un estilo streetwear limpio.',
+        colors: PALETTES['superheroes'],
+        img: 'https://drive.google.com/thumbnail?id=1uV-VJ3pg3fhNYpd50_X8lX0v_eBDM8c_&sz=w800',
+        fabrics: ['KZ Essential', 'Pesada Brutal']
+      },
+
+      // 3. LÍNEA CHICAS (11 referencias completas)
+      {
+        id: 'chica-frida',
+        title: 'Frida Kahlo // Red Roses & Sunglasses',
+        line: 'chicas',
+        lineLabel: 'Chicas',
+        desc: 'Retrato pop contemporáneo de Frida con corona de rosas rojas y gafas oscuras.',
+        colors: PALETTES['chicas'],
+        img: 'https://drive.google.com/thumbnail?id=1BymA-rRW8-d8VAV8Z7S2xtUa9XpvXe_Z&sz=w800',
+        fabrics: ['KZ Essential', 'Pesada Brutal']
+      },
+      {
+        id: 'chica-dogue',
+        title: 'DOGUE // Chic French Puppy',
+        line: 'chicas',
+        lineLabel: 'Chicas',
+        desc: 'Parodia editorial de alta costura con perrito caniche, bandana rosa y gafas chic.',
+        colors: PALETTES['chicas'],
+        img: 'https://drive.google.com/thumbnail?id=1rrVfiRPkA4d-6JrYyQ3AbrL66ZQeZGkO&sz=w800',
+        fabrics: ['KZ Essential', 'Pesada Brutal']
+      },
+      {
+        id: 'chica-pavo',
+        title: 'Pavo Real // Majestic Watercolor DTF',
+        line: 'chicas',
+        lineLabel: 'Chicas',
+        desc: 'Gradiente de color de alto impacto con plumaje de pavo real en acuarela digital.',
+        colors: PALETTES['chicas'],
+        img: 'https://drive.google.com/thumbnail?id=1QWuX0UWXD9GyIkcI-nySssfT6Xn9veoH&sz=w800',
+        fabrics: ['KZ Essential', 'Pesada Brutal']
+      },
+      {
+        id: 'chica-snoopy',
+        title: 'Snoopy // Urban Street Edition',
+        line: 'chicas',
+        lineLabel: 'Chicas',
+        desc: 'Diseño relajado de Snoopy con actitud urbana para looks casuales y frescos.',
+        colors: PALETTES['chicas'],
+        img: 'https://drive.google.com/thumbnail?id=1XWgJ897SGM6NNm5are7TNOwWtodKlqss&sz=w800',
+        fabrics: ['KZ Essential', 'Pesada Brutal']
+      },
+      {
+        id: 'chica-mariposas',
+        title: 'Mariposas // Aesthetic Vibes',
+        line: 'chicas',
+        lineLabel: 'Chicas',
+        desc: 'Ilustración botánica contemporánea de mariposas con estética minimalista.',
+        colors: PALETTES['chicas'],
+        img: 'https://drive.google.com/thumbnail?id=1XlnvowKTVeAS_amdGD_HitTmJDptEBum&sz=w800',
+        fabrics: ['KZ Essential', 'Pesada Brutal']
+      },
+      {
+        id: 'chica-flowers',
+        title: 'Flowers // Wild Botanical Vintage',
+        line: 'chicas',
+        lineLabel: 'Chicas',
+        desc: 'Flores silvestres con tipografía vintage para un estilo femenino delicado y moderno.',
+        colors: PALETTES['chicas'],
+        img: 'https://drive.google.com/thumbnail?id=1zRpKg-ki5K-Ubzq2pSE0UrFDb3SHNYUv&sz=w800',
+        fabrics: ['KZ Essential', 'Pesada Brutal']
+      },
+      {
+        id: 'chica-blooming',
+        title: 'Blooming // Flor de Loto Street',
+        line: 'chicas',
+        lineLabel: 'Chicas',
+        desc: 'Composición floral sobria inspirada en el renacer y la serenidad urbana.',
+        colors: PALETTES['chicas'],
+        img: 'https://drive.google.com/thumbnail?id=1_u5eHalsLZF-q-v0iIqNPz3CA-eIFmNw&sz=w800',
+        fabrics: ['KZ Essential', 'Pesada Brutal']
+      },
+      {
+        id: 'chica-horse',
+        title: 'Horse // Wild Spirit Contemporáneo',
+        line: 'chicas',
+        lineLabel: 'Chicas',
+        desc: 'Silueta artística y libre de caballo con trazo expresionista moderno.',
+        colors: PALETTES['chicas'],
+        img: 'https://drive.google.com/thumbnail?id=1IZH--WpZ4QSIS6rPrk2xlS-NUZW5lCv9&sz=w800',
+        fabrics: ['KZ Essential', 'Pesada Brutal']
+      },
+      {
+        id: 'chica-more-amore',
+        title: 'More Amore // Urban Typography',
+        line: 'chicas',
+        lineLabel: 'Chicas',
+        desc: 'Frase tipográfica italiana en rojo y blanco con toda la vibra europea streetwear.',
+        colors: PALETTES['chicas'],
+        img: 'https://drive.google.com/thumbnail?id=1CAowJUpt78EqqY2h4LibVRGzTp5p6Ove&sz=w800',
+        fabrics: ['KZ Essential', 'Pesada Brutal']
+      },
+      {
+        id: 'chica-love',
+        title: 'Love // Tipografía Minimalista',
+        line: 'chicas',
+        lineLabel: 'Chicas',
+        desc: 'Diseño tipográfico sutil y moderno para combinar con cualquier prenda casual.',
+        colors: PALETTES['chicas'],
+        img: 'https://drive.google.com/thumbnail?id=14AP-RIfDrUDdJO3GXLmz3WevevP5dQLQ&sz=w800',
+        fabrics: ['KZ Essential', 'Pesada Brutal']
+      },
+      {
+        id: 'chica-love-script',
+        title: 'Love Script // Trazo Caligráfico',
+        line: 'chicas',
+        lineLabel: 'Chicas',
+        desc: 'Caligrafía fluida de autor en DTF de alta definición para outfits relajados.',
+        colors: PALETTES['chicas'],
+        img: 'https://drive.google.com/thumbnail?id=1xUfTNSfeqUoF277Z_xB4J4iF3zpUu1cL&sz=w800',
+        fabrics: ['KZ Essential', 'Pesada Brutal']
+      },
+
+      // 4. LÍNEA NAVIDAD 2026 (17 referencias completas)
+      {
+        id: 'nav-01',
+        title: 'Navidad 1 // Santa Claus 3D Knitted',
+        line: 'navidad',
+        lineLabel: 'Navidad 2026',
+        desc: 'Rostro de Papá Noel con textura hiperrealista de lana tejida. El diseño estrella de temporada.',
+        colors: PALETTES['navidad'],
+        img: 'https://drive.google.com/thumbnail?id=1dxP4QTjFmf-OK5ohIjEroqEzVT7y-k66&sz=w800',
+        fabrics: ['KZ Essential', 'Pesada Brutal']
+      },
+      {
+        id: 'nav-02',
+        title: 'Navidad 2 // Feliz Navidad Reno & Pinos',
+        line: 'navidad',
+        lineLabel: 'Navidad 2026',
+        desc: 'Ilustración nostálgica vintage en espalda con Santa, reno y pinos nevados.',
+        colors: PALETTES['navidad'],
+        img: 'https://drive.google.com/thumbnail?id=1ymu28Agp5s6-ltmtcVT6_9z3uiQqyw-l&sz=w800',
+        fabrics: ['KZ Essential', 'Pesada Brutal']
+      },
+      {
+        id: 'nav-03',
+        title: 'Navidad 3 // Santa Minimal Street',
+        line: 'navidad',
+        lineLabel: 'Navidad 2026',
+        desc: 'Ilustración festiva moderna y limpia en estampación DTF de alta definición.',
+        colors: PALETTES['navidad'],
+        img: 'https://drive.google.com/thumbnail?id=1TCDxseJTwF-mCHCi4LEx1XJFlKSFWy4H&sz=w800',
+        fabrics: ['KZ Essential', 'Pesada Brutal']
+      },
+      {
+        id: 'nav-04',
+        title: 'Navidad 4 // Pinos & Noche Invernal',
+        line: 'navidad',
+        lineLabel: 'Navidad 2026',
+        desc: 'Composición paisajística con bosque de pinos bajo el cielo nocturno estrellado.',
+        colors: PALETTES['navidad'],
+        img: 'https://drive.google.com/thumbnail?id=1doNbwsGAim0yJVbZPiyEGDt4HLCQM5Pe&sz=w800',
+        fabrics: ['KZ Essential', 'Pesada Brutal']
+      },
+      {
+        id: 'nav-05',
+        title: 'Navidad 5 // Rudolph Geometric Art',
+        line: 'navidad',
+        lineLabel: 'Navidad 2026',
+        desc: 'Reno de Navidad estilizado con trazo geométrico y detalles dorados festivos.',
+        colors: PALETTES['navidad'],
+        img: 'https://drive.google.com/thumbnail?id=1IjD3Rt8ZY48vGvetnbHhwHezBghJK6Nt&sz=w800',
+        fabrics: ['KZ Essential', 'Pesada Brutal']
+      },
+      {
+        id: 'nav-06',
+        title: 'Navidad 6 // Holiday Streetwear Type',
+        line: 'navidad',
+        lineLabel: 'Navidad 2026',
+        desc: 'Mensaje festivo en tipografía condensada de moda urbana contemporánea.',
+        colors: PALETTES['navidad'],
+        img: 'https://drive.google.com/thumbnail?id=1XLXkF3HZsFYgqUelN-7dm0URkub-EZj8&sz=w800',
+        fabrics: ['KZ Essential', 'Pesada Brutal']
+      },
+      {
+        id: 'nav-07',
+        title: 'Navidad 7 // Vintage Merry Christmas',
+        line: 'navidad',
+        lineLabel: 'Navidad 2026',
+        desc: 'Estética clásica navideña adaptada a silueta streetwear.',
+        colors: PALETTES['navidad'],
+        img: 'https://drive.google.com/thumbnail?id=1sA6KUNKCl92AuSNXZbSy6HF_JPT2-go2&sz=w800',
+        fabrics: ['KZ Essential', 'Pesada Brutal']
+      },
+      {
+        id: 'nav-08',
+        title: 'Navidad 8 // Festive Botanical Wreath',
+        line: 'navidad',
+        lineLabel: 'Navidad 2026',
+        desc: 'Corona navideña con frutos rojos y ramas de pino en alta definición.',
+        colors: PALETTES['navidad'],
+        img: 'https://drive.google.com/thumbnail?id=108o0nVvEkxHuTiuj-R3jpDLld5dgOveU&sz=w800',
+        fabrics: ['KZ Essential', 'Pesada Brutal']
+      },
+      {
+        id: 'nav-09',
+        title: 'Navidad 9 // Golden Lights Tree',
+        line: 'navidad',
+        lineLabel: 'Navidad 2026',
+        desc: 'Árbol navideño moderno compuesto por haces de luces y estrellas doradas.',
+        colors: PALETTES['navidad'],
+        img: 'https://drive.google.com/thumbnail?id=1r8UXKhgwVaf1mzAVFBX-DW8AMx-PMtWJ&sz=w800',
+        fabrics: ['KZ Essential', 'Pesada Brutal']
+      },
+      {
+        id: 'nav-10',
+        title: 'Navidad 10 // Winter Mountain Cabin',
+        line: 'navidad',
+        lineLabel: 'Navidad 2026',
+        desc: 'Cabaña de montaña nevada con humo en la chimenea y atmósfera acogedora.',
+        colors: PALETTES['navidad'],
+        img: 'https://drive.google.com/thumbnail?id=1ZC8_e7YblcLUqqIY_CXtorMexG0ID_3U&sz=w800',
+        fabrics: ['KZ Essential', 'Pesada Brutal']
+      },
+      {
+        id: 'nav-11',
+        title: 'Navidad 11 // Santa Express Sleigh',
+        line: 'navidad',
+        lineLabel: 'Navidad 2026',
+        desc: 'Silueta del trineo de Santa cruzando la luna llena de Nochebuena.',
+        colors: PALETTES['navidad'],
+        img: 'https://drive.google.com/thumbnail?id=1KxdcTNQWDxwvwJrL_Mwd5SlWPtMC6JbA&sz=w800',
+        fabrics: ['KZ Essential', 'Pesada Brutal']
+      },
+      {
+        id: 'nav-12',
+        title: 'Navidad 12 // Holiday Cheers & Joy',
+        line: 'navidad',
+        lineLabel: 'Navidad 2026',
+        desc: 'Ilustración festiva de celebración y buenos deseos para compartir en familia.',
+        colors: PALETTES['navidad'],
+        img: 'https://drive.google.com/thumbnail?id=11WIc3WL4T0hA9KGMgSu8gOvlLghzJEfw&sz=w800',
+        fabrics: ['KZ Essential', 'Pesada Brutal']
+      },
+      {
+        id: 'nav-13',
+        title: 'Navidad 13 // Cozy Season Pattern',
+        line: 'navidad',
+        lineLabel: 'Navidad 2026',
+        desc: 'Patrón textil de copos de nieve inspirado en suéteres clásicos navideños.',
+        colors: PALETTES['navidad'],
+        img: 'https://drive.google.com/thumbnail?id=1nTRAIAcQ-xBDSAD1UWgWqyT6vMBqOlRg&sz=w800',
+        fabrics: ['KZ Essential', 'Pesada Brutal']
+      },
+      {
+        id: 'nav-14',
+        title: 'Navidad 14 // Peace, Love & Joy',
+        line: 'navidad',
+        lineLabel: 'Navidad 2026',
+        desc: 'Tipografía minimalista con los tres valores esenciales de la Navidad.',
+        colors: PALETTES['navidad'],
+        img: 'https://drive.google.com/thumbnail?id=1iGIaq4kAB_caera2aABv2N50tqacO3Mw&sz=w800',
+        fabrics: ['KZ Essential', 'Pesada Brutal']
+      },
+      {
+        id: 'nav-15',
+        title: 'Navidad 15 // North Pole Workshop',
+        line: 'navidad',
+        lineLabel: 'Navidad 2026',
+        desc: 'Sello gráfico vintage del taller del Polo Norte para regalos únicos.',
+        colors: PALETTES['navidad'],
+        img: 'https://drive.google.com/thumbnail?id=14kIq-pa-6j4cmTxUDmTh00kMDkYKeBOH&sz=w800',
+        fabrics: ['KZ Essential', 'Pesada Brutal']
+      },
+      {
+        id: 'nav-16',
+        title: 'Navidad 16 // Christmas Special Delivery',
+        line: 'navidad',
+        lineLabel: 'Navidad 2026',
+        desc: 'Diseño tipo estampilla postal navideña con detalles en rojo carmesí.',
+        colors: PALETTES['navidad'],
+        img: 'https://drive.google.com/thumbnail?id=1XPJ5NKdQLCCz7EU0b40R41rsepCnUx33&sz=w800',
+        fabrics: ['KZ Essential', 'Pesada Brutal']
+      },
+      {
+        id: 'nav-17',
+        title: 'Navidad 17 // New Year Countdown',
+        line: 'navidad',
+        lineLabel: 'Navidad 2026',
+        desc: 'Edición especial de fin de año para estrenar en las fiestas.',
+        colors: PALETTES['navidad'],
+        img: 'https://drive.google.com/thumbnail?id=1iDHZRO8iCId1yyeJoSLlO002r-BgojCc&sz=w800',
+        fabrics: ['KZ Essential', 'Pesada Brutal']
+      }
+    ];
+
+    // Registro de selecciones activas por tarjeta
+    const userSelections = {};
+
+    function initProducts() {
+      ALL_PRODUCTS.forEach(p => {
+        userSelections[p.id] = {
+          colorIndex: 0,
+          fabric: p.fabrics[0]
+        };
+      });
+
+      // Actualizar contadores de las píldoras de filtro
+      document.getElementById('count-todas').textContent = ALL_PRODUCTS.length;
+      document.getElementById('count-73505').textContent = ALL_PRODUCTS.filter(p => p.line === '73505').length;
+      document.getElementById('count-superheroes').textContent = ALL_PRODUCTS.filter(p => p.line === 'superheroes').length;
+      document.getElementById('count-chicas').textContent = ALL_PRODUCTS.filter(p => p.line === 'chicas').length;
+      document.getElementById('count-navidad').textContent = ALL_PRODUCTS.filter(p => p.line === 'navidad').length;
+
+      renderProducts();
+    }
+
+    function renderProducts() {
+      const container = document.getElementById('products-grid');
+      container.innerHTML = '';
+
+      const filtered = selectedLine === 'todas' 
+        ? ALL_PRODUCTS 
+        : ALL_PRODUCTS.filter(p => p.line === selectedLine);
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div class="col-span-full py-16 text-center text-gray-400">
+            <i class="fa-solid fa-shirt text-4xl mb-3 text-gray-600 block"></i>
+            <p class="font-heading font-bold text-lg text-white">Pronto nueva colección en esta línea</p>
+            <p class="text-xs mt-1">Estamos subiendo nuevos motivos a la carpeta de Google Drive.</p>
+          </div>
+        `;
+        return;
+      }
+
+      filtered.forEach(p => {
+        const sel = userSelections[p.id] || { colorIndex: 0, fabric: p.fabrics[0] };
+        const activeColor = p.colors[sel.colorIndex] || p.colors[0];
+        
+        const card = document.createElement('div');
+        card.className = "bg-kz-card border border-kz-border rounded-2xl overflow-hidden hover:border-kz-gold/50 transition-all flex flex-col group shadow-lg";
+
+        // Muestrarios de color (swatches grandes para celular)
+        let swatchesHtml = '';
+        p.colors.forEach((c, idx) => {
+          const isActive = idx === sel.colorIndex ? 'ring-2 ring-kz-gold scale-110' : 'opacity-70 hover:opacity-100';
+          swatchesHtml += `
+            <button onclick="selectProductColor('${p.id}', ${idx})" 
+                    class="w-7 h-7 sm:w-6 sm:h-6 rounded-full border border-white/40 transition-all ${isActive} touch-manipulation" 
+                    style="background-color: ${c.hex};" 
+                    title="${c.name}">
+            </button>
+          `;
+        });
+
+        // Selector de tela
+        let fabricsHtml = '';
+        p.fabrics.forEach(f => {
+          const isSelected = f === sel.fabric ? 'bg-kz-gold text-black font-bold' : 'bg-neutral-800 text-gray-300 hover:text-white';
+          fabricsHtml += `
+            <button onclick="selectProductFabric('${p.id}', '${f}')" 
+                    class="px-2.5 py-1.5 sm:py-1 rounded-lg text-xs sm:text-[11px] transition-colors ${isSelected} touch-manipulation">
+              ${f}
+            </button>
+          `;
+        });
+
+        card.innerHTML = `
+          <!-- Image Container with Zoom Trigger -->
+          <div class="relative aspect-square w-full bg-neutral-900 overflow-hidden flex items-center justify-center p-3 sm:p-4">
+            <img id="img-${p.id}" src="${p.img}" alt="${p.title}" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300">
+            <span class="absolute top-2.5 left-2.5 sm:top-3 sm:left-3 bg-black/80 backdrop-blur-md text-kz-gold border border-kz-gold/30 text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">
+              ${p.lineLabel}
+            </span>
+            <!-- Botón Lupa de Detalle -->
+            <button onclick="openZoomModal('${p.id}')" 
+                    class="absolute top-2.5 right-2.5 sm:top-3 sm:right-3 w-8 h-8 rounded-full bg-black/70 hover:bg-black text-gray-200 hover:text-kz-gold border border-white/20 flex items-center justify-center backdrop-blur-md transition-all hover:scale-110"
+                    title="Ver detalle macro del estampado">
+              <i class="fa-solid fa-magnifying-glass-plus text-xs"></i>
+            </button>
+          </div>
+
+          <!-- Product Details -->
+          <div class="p-4 sm:p-5 flex flex-col flex-grow justify-between space-y-3 sm:space-y-4">
+            <div>
+              <h3 class="font-heading font-bold text-sm sm:text-base text-white group-hover:text-kz-gold transition-colors line-clamp-1">
+                ${p.title}
+              </h3>
+              <p class="text-[11px] sm:text-xs text-gray-400 mt-1 line-clamp-2 leading-relaxed">
+                ${p.desc}
+              </p>
+            </div>
+
+            <!-- Paleta y selector de tela -->
+            <div class="space-y-2.5 sm:space-y-3 pt-2.5 sm:pt-3 border-t border-kz-border/80">
+              <div class="flex items-center justify-between">
+                <span class="text-xs text-gray-400">Color: <strong class="text-white">${activeColor.name}</strong></span>
+                <div class="flex items-center gap-1.5 flex-wrap">
+                  ${swatchesHtml}
+                </div>
+              </div>
+
+              <div class="flex items-center justify-between">
+                <span class="text-xs text-gray-400">Tela:</span>
+                <div class="flex items-center gap-1.5">
+                  ${fabricsHtml}
+                </div>
+              </div>
+            </div>
+
+            <!-- CTA Comprar al WhatsApp -->
+            <button onclick="orderProductWhatsApp('${p.id}')" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs sm:text-sm py-3 px-3 rounded-xl shadow-md shadow-emerald-950 flex items-center justify-center gap-2 transition-all hover:scale-[1.02] active:scale-95 touch-manipulation">
+              <i class="fa-brands fa-whatsapp text-base sm:text-lg"></i>
+              <span>Comprar al WhatsApp</span>
+            </button>
+          </div>
+        `;
+
+        container.appendChild(card);
+      });
+    }
+
+    function selectProductColor(productId, colorIdx) {
+      if (!userSelections[productId]) {
+        userSelections[productId] = { colorIndex: 0, fabric: 'Pesada Brutal' };
+      }
+      userSelections[productId].colorIndex = colorIdx;
+      renderProducts();
+    }
+
+    function selectProductFabric(productId, fabricName) {
+      if (!userSelections[productId]) {
+        userSelections[productId] = { colorIndex: 0, fabric: fabricName };
+      }
+      userSelections[productId].fabric = fabricName;
+      renderProducts();
+    }
+
+    function filterByLine(lineKey) {
+      selectedLine = lineKey;
+      
+      document.querySelectorAll('.line-filter-btn').forEach(btn => {
+        if (btn.getAttribute('data-line') === lineKey) {
+          btn.className = "line-filter-btn active whitespace-nowrap px-4 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-kz-gold text-black transition-all";
+        } else {
+          btn.className = "line-filter-btn whitespace-nowrap px-4 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-medium bg-kz-card border border-kz-border text-gray-300 hover:text-white hover:border-kz-gold transition-all";
+        }
+      });
+
+      renderProducts();
+    }
+
+    // Mensaje formateado para WhatsApp
+    function orderProductWhatsApp(productId) {
+      const p = ALL_PRODUCTS.find(x => x.id === productId);
+      if (!p) return;
+      const sel = userSelections[productId] || { colorIndex: 0, fabric: p.fabrics[0] };
+      const activeColor = p.colors[sel.colorIndex] || p.colors[0];
+
+      const phone = '573334019149';
+      const msg = `¡Hola KaMiZeta (KZ)! 👋 Me interesa pedir la siguiente camiseta:\n\n` +
+                  `👕 *Diseño:* ${p.title}\n` +
+                  `🏷️ *Línea:* ${p.lineLabel}\n` +
+                  `🎨 *Color de Prenda:* ${activeColor.name}\n` +
+                  `🧵 *Tipo de Tela:* ${sel.fabric}\n\n` +
+                  `¿Me confirmas disponibilidad de tallas y cómo concretamos el envío? ¡Muchas gracias!`;
+
+      const url = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
+      window.open(url, '_blank');
+    }
+
+    // Lógica del Carrusel Hero con Touch Gestures
+    function showSlide(index) {
+      currentSlide = (index + totalSlides) % totalSlides;
+      const slides = document.querySelectorAll('.hero-slide');
+      slides.forEach((s, idx) => {
+        if (idx === currentSlide) {
+          s.classList.remove('opacity-0', 'pointer-events-none');
+          s.classList.add('opacity-100', 'pointer-events-auto');
+        } else {
+          s.classList.remove('opacity-100', 'pointer-events-auto');
+          s.classList.add('opacity-0', 'pointer-events-none');
+        }
+      });
+
+      const dots = document.querySelectorAll('#slider-dots button');
+      dots.forEach((d, idx) => {
+        if (idx === currentSlide) {
+          d.className = "w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-kz-gold transition-all scale-125";
+        } else {
+          d.className = "w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-gray-500 hover:bg-white transition-all";
+        }
+      });
+    }
+
+    function nextSlide() { showSlide(currentSlide + 1); }
+    function prevSlide() { showSlide(currentSlide - 1); }
+
+    function startSliderAuto() {
+      if (sliderTimer) clearInterval(sliderTimer);
+      sliderTimer = setInterval(nextSlide, 5000);
+    }
+
+    // Lógica del Modal de Guía de Tallas
+    function openSizeGuideModal() {
+      document.getElementById('modal-size-guide').classList.remove('hidden');
+    }
+    function closeSizeGuideModal() {
+      document.getElementById('modal-size-guide').classList.add('hidden');
+    }
+
+    // Lógica de Lupa / Zoom Interactivo
+    function openZoomModal(productId) {
+      const p = ALL_PRODUCTS.find(x => x.id === productId);
+      if (!p) return;
+      currentZoomItem = p;
+      const sel = userSelections[productId] || { colorIndex: 0, fabric: p.fabrics[0] };
+      const activeColor = p.colors[sel.colorIndex] || p.colors[0];
+
+      document.getElementById('zoom-product-line').textContent = p.lineLabel;
+      document.getElementById('zoom-product-title').textContent = p.title;
+      document.getElementById('zoom-color-label').textContent = `${activeColor.name} (${sel.fabric})`;
+      
+      const targetImg = document.getElementById('zoom-target-img');
+      targetImg.src = p.img;
+      targetImg.style.transform = 'scale(1)';
+
+      document.getElementById('modal-zoom').classList.remove('hidden');
+    }
+
+    function closeZoomModal() {
+      document.getElementById('modal-zoom').classList.add('hidden');
+      const targetImg = document.getElementById('zoom-target-img');
+      targetImg.style.transform = 'scale(1)';
+    }
+
+    function orderZoomProductWhatsApp() {
+      if (currentZoomItem) {
+        orderProductWhatsApp(currentZoomItem.id);
+      }
+    }
+
+    // Manejador del movimiento de lupa
+    function setupZoomLens() {
+      const viewport = document.getElementById('zoom-viewport');
+      const img = document.getElementById('zoom-target-img');
+
+      function handleMove(e) {
+        const rect = viewport.getBoundingClientRect();
+        let clientX = e.clientX;
+        let clientY = e.clientY;
+
+        if (e.touches && e.touches.length > 0) {
+          clientX = e.touches[0].clientX;
+          clientY = e.touches[0].clientY;
+        }
+
+        const x = ((clientX - rect.left) / rect.width) * 100;
+        const y = ((clientY - rect.top) / rect.height) * 100;
+
+        img.style.transformOrigin = `${x}% ${y}%`;
+        img.style.transform = 'scale(2.5)';
+      }
+
+      function handleLeave() {
+        img.style.transformOrigin = 'center center';
+        img.style.transform = 'scale(1)';
+      }
+
+      viewport.addEventListener('mousemove', handleMove);
+      viewport.addEventListener('mouseleave', handleLeave);
+      viewport.addEventListener('touchmove', handleMove, { passive: true });
+      viewport.addEventListener('touchend', handleLeave);
+    }
+
+    // Inicialización y eventos
+    window.addEventListener('DOMContentLoaded', () => {
+      initProducts();
+      showSlide(0);
+      startSliderAuto();
+      setupZoomLens();
+
+      // Controles del carrusel
+      document.getElementById('slider-next').addEventListener('click', () => {
+        nextSlide();
+        startSliderAuto();
+      });
+      document.getElementById('slider-prev').addEventListener('click', () => {
+        prevSlide();
+        startSliderAuto();
+      });
+      document.querySelectorAll('#slider-dots button').forEach(dot => {
+        dot.addEventListener('click', (e) => {
+          const idx = parseInt(e.currentTarget.getAttribute('data-slide'));
+          showSlide(idx);
+          startSliderAuto();
+        });
+      });
+
+      // Swipe táctil en móvil
+      const bannerWrapper = document.getElementById('hero-banner-wrapper');
+      let touchStartX = 0;
+      let touchEndX = 0;
+
+      bannerWrapper.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
+
+      bannerWrapper.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        const threshold = 40;
+        if (touchEndX < touchStartX - threshold) {
+          nextSlide();
+          startSliderAuto();
+        } else if (touchEndX > touchStartX + threshold) {
+          prevSlide();
+          startSliderAuto();
+        }
+      }, { passive: true });
+
+      // Menú móvil
+      const mobileBtn = document.getElementById('btn-mobile-menu');
+      const mobileNav = document.getElementById('mobile-nav');
+      if (mobileBtn && mobileNav) {
+        mobileBtn.addEventListener('click', () => {
+          mobileNav.classList.toggle('hidden');
+        });
+        document.querySelectorAll('.mobile-link').forEach(link => {
+          link.addEventListener('click', () => {
+            mobileNav.classList.add('hidden');
+          });
+        });
+      }
+
+      // Cerrar modales con tecla Escape
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          closeSizeGuideModal();
+          closeZoomModal();
+        }
+      });
+    });
+  </script>
+</body>
+</html>
